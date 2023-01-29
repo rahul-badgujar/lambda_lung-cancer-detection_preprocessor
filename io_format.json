@@ -1,0 +1,28 @@
+{
+  "requests": [
+    {
+      "image": "<img-s3-path>",
+      "config": {
+        "enhancement": {
+          "enabled": true
+        },
+        "filtration": {
+          "enabled": true
+        },
+        "segmentation": {
+          "enabled": true
+        }
+      },
+      "output": {
+        "enhancement": {
+          "image": "<img-s3-path>",
+          "error": {
+            "type": "ERROR-CODE",
+            "message": "error-msg"
+          }
+        }
+      }
+    }
+  ]
+}
+
