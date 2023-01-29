@@ -1,5 +1,7 @@
 import cv2
-from preprocessor.preprocessor_base import Preprocessor
+
+from enums.preprocessing_stage import PreprocessingStage
+from preprocessors.preprocessor_base import Preprocessor
 from PIL import Image, ImageFilter
 import numpy as np
 
@@ -8,6 +10,9 @@ class ImageFilterer(Preprocessor):
   @staticmethod
   def get_filterer():
     return ImageFilter.MedianFilter(size=3)
+
+  def get_preprocessing_stage(self) ->PreprocessingStage:
+    return PreprocessingStage.filtration
 
   def process(self, ip_img_from, op_img_at) -> None:
     print(f'IMAGE-FILTERER:: request to process img:  {ip_img_from}')

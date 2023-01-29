@@ -1,4 +1,5 @@
-from preprocessor.preprocessor_base import Preprocessor
+from enums.preprocessing_stage import PreprocessingStage
+from preprocessors.preprocessor_base import Preprocessor
 import cv2
 import numpy as np
 
@@ -11,6 +12,9 @@ class ImageEnhancer(Preprocessor):
     x = np.arange(256)
     table = np.interp(x, xp, fp).astype('uint8')
     return table
+
+  def get_preprocessing_stage(self) ->PreprocessingStage:
+    return PreprocessingStage.enhancement
 
   def process(self, ip_img_from, op_img_at) -> None:
     print(f'IMAGE-ENHANCER:: request to process img:  {ip_img_from}')

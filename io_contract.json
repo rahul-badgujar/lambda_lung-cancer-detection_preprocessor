@@ -1,6 +1,8 @@
 {
+  "run-id": "<request-id-here>",
   "requests": [
     {
+      "request-id": "0",
       "image": "<img-s3-path>",
       "config": {
         "enhancement": {

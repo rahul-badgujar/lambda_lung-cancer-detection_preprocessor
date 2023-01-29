@@ -1,9 +1,13 @@
-from preprocessor.preprocessor_base import Preprocessor
+from enums.preprocessing_stage import PreprocessingStage
+from preprocessors.preprocessor_base import Preprocessor
 import numpy as np
 import cv2
 
 
 class ImageSegmentor(Preprocessor):
+  def get_preprocessing_stage(self) -> PreprocessingStage:
+    return PreprocessingStage.segmentation
+
   def process(self, ip_img_from, op_img_at) -> None:
     print(f'IMAGE-SEGMENTOR:: request to process img:  {ip_img_from}')
 
@@ -27,7 +31,7 @@ class ImageSegmentor(Preprocessor):
     mean2 = (np.cumsum((hist * bin_mids)[::-1]) / weight2[::-1])[::-1]
 
     inter_class_variance = weight1[:-1] * weight2[1:] * (
-          mean1[:-1] - mean2[1:]) ** 2
+        mean1[:-1] - mean2[1:]) ** 2
 
     index_of_max_val = np.argmax(inter_class_variance)
 
